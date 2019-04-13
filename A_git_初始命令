@@ -7,8 +7,8 @@ vim /root/.ssh/id_rsa.pub #创建私钥,复制公钥
 #####################
 #将公钥传给github####
 #####################
-ssh -T git@github.com
-git config --global user.name "ziyiliunian"
+ssh -T git@github.com #连接
+git config --global user.name "ziyiliunian" #用户名
 git config --global user.email "316878142@qq.com"
 
 #git绑定github远程仓库
@@ -32,7 +32,7 @@ error: 无法推送一些引用到 'https://github.com/***'
 git push -u origin +master #强行上传
 
 
-
+#常用命令
 查看文件状态：git status
 查看远程git地址：git remote -v
 克隆代码：git clone 项目地址
