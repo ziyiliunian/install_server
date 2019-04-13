@@ -22,6 +22,13 @@ git add .
 git commit -m "first pull"
 git push -u origin master
 
+#如果出现如下报错
+error: 无法推送一些引用到 'https://github.com/***'
+#原因可能是之前上传时创建的.git文件被删除或更改，或者其他人在github上提交过代码
+#解决方案
+git push -u origin +master #强行上传
+
+
 
 查看文件状态：git status
 查看远程git地址：git remote -v
