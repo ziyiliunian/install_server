@@ -1,0 +1,38 @@
+#!/bin/bash
+
+IMG_DIR=/var/lib/libvirt/images
+BASEVM=node
+read -p "Enter VM number: " VMNUM
+if [ $VMNUM -le 9 ];then
+VMNUM=0$VMNUM
+fi
+
+
+if [ -z "${VMNUM}" ]; then
+    echo "You must input a number."
+    exit 65
+elif [ $(echo ${VMNUM}*1 | bc) = 0 ]; then
+    echo "You must input a number."
+    exit 66
+elif [ ${VMNUM} -lt 1 -o ${VMNUM} -gt 99 ]; then
+    echo "Input out of range"
+    exit 67
+fi
+
+NEWVM=test_node${VMNUM}
+
+if [ -e $IMG_DIR/${NEWVM}.img ]; then
+    echo "File exists."
+    exit 68
+fi
+
+echo -en "Creating Virtual Machine disk image......\t"
+qemu-img create -f qcow2 -b $IMG_DIR/${BASEVM}.qcow2 $IMG_DIR/${NEWVM}.img 100G &> /dev/null
+echo -e "\e[32;1m[OK]\e[0m"
+
+cat /var/lib/libvirt/images/node.xml > /tmp/myvm.xml
+sed -i "s/demo/${NEWVM}/g" /tmp/myvm.xml
+
+echo -en "Defining new virtual machine......\t\t"
+virsh define /tmp/myvm.xml &> /dev/null
+echo -e "\e[32;1m[OK]\e[0m"
