@@ -2,8 +2,11 @@
 git init
 
 #ssh连接github
-ssh-keygen -t rsa -C "316878142@qq.com"
-vim /root/.ssh/id_rsa.pub
+ssh-keygen -t rsa -C "316878142@qq.com" #注册github邮箱
+vim /root/.ssh/id_rsa.pub #创建私钥,复制公钥
+#####################
+#将公钥传给github####
+#####################
 ssh -T git@github.com
 git config --global user.name "ziyiliunian"
 git config --global user.email "316878142@qq.com"
