@@ -1,0 +1,24 @@
+#git创建本地仓库
+git init
+
+#ssh连接github
+ssh-keygen -t rsa -C "316878142@qq.com"
+vim /root/.ssh/id_rsa.pub
+ssh -T git@github.com
+git config --global user.name "ziyiliunian"
+git config --global user.email "316878142@qq.com"
+
+#git绑定github远程仓库
+git remote origin git@github.com:ziyiliunian/shell-test.git
+
+#推送本地仓库到远程，到master分支
+git push -u origin master 
+
+#如果出现如下报错
+error: src refspec master does not match any.
+error: 无法推送一些引用到 'git@github.com:ziyiliunian/shell-test.git'
+#解决方案
+git add .
+git commit -m "first pull"
+git push -u origin master
+
