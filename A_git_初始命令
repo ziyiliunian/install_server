@@ -31,6 +31,15 @@ error: 无法推送一些引用到 'https://github.com/***'
 #解决方案
 git push -u origin +master #强行上传
 
+#warning: push.default 未设置，它的默认值将会在 Git 2.0 由 'matching'
+#修改为 'simple'。若要不再显示本信息并在其默认值改变后维持当前使用习惯，
+#进行如下设置：
+#
+#  git config --global push.default matching
+#
+#
+
+
 
 #常用命令
 查看文件状态：git status

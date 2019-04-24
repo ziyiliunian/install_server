@@ -7,7 +7,7 @@ for i in `seq $a`
   do
     ping -c 3 -i 0.2 -w 1 176.4.11.$i  &> /dev/null
   if [ $? -eq 0 ]; then
-       echo "176.4.11.$i  存在" >> ok.txt
+       echo "176.4.11.$i  存在" >> ./ok.txt
        let x++  
   else
        echo " 176.4.11.$i 不存在"  > /dev/null
