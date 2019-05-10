@@ -12,7 +12,7 @@ git config --global user.name "ziyiliunian" #用户名
 git config --global user.email "316878142@qq.com"
 
 #git绑定github远程仓库
-git remote origin git@github.com:ziyiliunian/shell-test.git
+git remote add origin git@github.com:ziyiliunian/shell-test.git
 
 #推送本地仓库到远程，到master分支
 git push -u origin master 
